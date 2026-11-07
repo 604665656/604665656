@@ -21,7 +21,7 @@
 | [live-copilot · 路线图](https://github.com/users/604665656/projects/6) | 弹幕游戏 AI 导演 | 2 项 |
 | [skyworth 8S03 物理按键 · 路线图](https://github.com/users/604665656/projects/8) | 电视按键映射 | 2 项 |
 | [若辰曲库 × Toy 小游戏 · 路线图](https://github.com/users/604665656/projects/7) | 匹配体系与生成物 | 2 项 |
-| [yuanbao-asset-rescue · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 8 项，4 个 P1 |
+| [yuanbao-asset-rescue · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 9 项，5 个 P1 |
 
 优先级只有三档：**P0** 现在就做 / **P1** 下一批 / **P2** 有空再说。
 
@@ -31,7 +31,8 @@
 
 [![在线试玩](https://img.shields.io/badge/在线试玩-Pages-5cc8ff)](https://604665656.github.io/hashimiao-paperdoll/)
 [![仓库](https://img.shields.io/badge/源码-hashimiao--paperdoll-181717?logo=github)](https://github.com/604665656/hashimiao-paperdoll)
-[![原始稿](https://img.shields.io/badge/原始稿-246%20张%20%2F%20171MB-ffb454)](https://github.com/604665656/hashimiao-asset-archive)
+[![原始稿](https://img.shields.io/badge/原始稿-288%20张%20%2F%20274.9MB-ffb454)](https://github.com/604665656/hashimiao-asset-archive)
+[![在线图廊](https://img.shields.io/badge/在线图廊-Pages-5cc8ff)](https://604665656.github.io/hashimiao-asset-archive/)
 
 本地纸娃娃编辑器，纯前端无后端。操作模型参照《冒险岛》纸娃娃 4.0 的交互逻辑（只复刻操作方式，素材全部自有）。
 
@@ -43,9 +44,13 @@
 配套三套 Python 工具：截图批量入库（泛洪去背 + 连通域切图 + 归一化）、素材体检（尺寸 / alpha / 命名 / 缺件，47 项）、参考卡生成（头身比 / 衣褶 / 八向骨架比例）。
 
 原始生成稿另存一份：[**hashimiao-asset-archive**](https://github.com/604665656/hashimiao-asset-archive)
-—— 从元宝客户端缓存里抢救出的 246 张原图（含桌面散件），带 sha1 清单和图廊
-（[在线看](https://604665656.github.io/hashimiao-asset-archive/)）。
-缓存是整个 App 共享的，另外混进来的 68 张别的对话的图单独归类存档，不混在一起。
+—— 从元宝客户端缓存里分两轮抢救出的 **288 张原图 / 274.9 MB**（含桌面散件），带 sha1 清单、轮次字段和
+[在线图廊](https://604665656.github.io/hashimiao-asset-archive/)。
+
+- 第 1 轮 246 张：绿幕白模、1328×1776 生成稿、部件拆解
+- 第 2 轮 42 张：缓存被新对话换批后重新提取，与首轮做 sha1 差集，补进八向 / 角色三视图新文件（37 张设定稿 + 5 张网页与界面实测截图，分开归类）
+
+缓存是整个 App 共享的，另外混进来的 68 张别的对话的图单独归类存档，不混在一起；对话正文因元宝是流式响应、不落磁盘缓存，无法恢复。元宝那边另给的「13 卷 / 5145 文件 / 2.1GB」完整工作区总包是下载链接，本地尚未下载，未纳入仓库。
 
 ---
 
@@ -54,14 +59,15 @@
 [![仓库](https://img.shields.io/badge/源码-yuanbao--asset--rescue-181717?logo=github)](https://github.com/604665656/yuanbao-asset-rescue)
 [![路线图](https://img.shields.io/badge/路线图-Project-5cc8ff)](https://github.com/users/604665656/projects/11)
 
-从**元宝 App 的 WebView2 缓存**里把对话中渲染过的图片全部捞出来，整理成带清单和图廊的档案。上面那份 246 张原始稿就是它捞的。
+从**元宝 App 的 WebView2 缓存**里把对话中渲染过的图片全部捞出来，整理成带清单和图廊的档案。上面那份 288 张原始稿就是它分两轮捞的。
 
 - `recover.py`：扫缓存 → 按 magic byte 认图片 → sha1 去重 → 绿占比/尺寸分桶
 - `build_archive.py`：分组编号 → 清单（CSV/JSON）→ 缩略图 → 分组总览 → 静态图廊
 - `triage.py`：出逐格审查图，人工挑出「别的对话混进来的图」
+- `merge_round.py` + `gallery.py`：**增量轮次合并** —— 与已有清单做 sha1 差集，只并入真新增；图廊改为清单驱动（读 `路径` 字段），不再依赖已删除的提取中间目录
 - `push.py`：大仓库分批推送，代理不稳时也能推完
 
-README 里记死了踩过的坑：**缓存是全 App 共享**（不按对话分，必须人工分拣）、**对话正文救不回来**（流式响应不落盘）、**缓存 JPG 可能被截断**（要开 `LOAD_TRUNCATED_IMAGES`）、**Pages 要放 `.nojekyll`**、**代理会截断大响应**（验证用 API 取 blob 别用 curl）。
+README 里记死了踩过的坑：**缓存是全 App 共享**（不按对话分，必须人工分拣）、**缓存会被新对话挤掉**（要及时按轮次提取做差集）、**审查图编号要和缓存ID画在同一格**（否则两套顺序对不上会误判）、**对话正文救不回来**（流式响应不落盘）、**缓存 JPG 可能被截断**（要开 `LOAD_TRUNCATED_IMAGES`）、**Pages 要放 `.nojekyll`**、**代理会截断大响应**（验证用 API 取 blob 别用 curl）。
 
 ---
 
