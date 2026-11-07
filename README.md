@@ -30,7 +30,7 @@
 
 [![在线试玩](https://img.shields.io/badge/在线试玩-Pages-5cc8ff)](https://604665656.github.io/hashimiao-paperdoll/)
 [![仓库](https://img.shields.io/badge/源码-hashimiao--paperdoll-181717?logo=github)](https://github.com/604665656/hashimiao-paperdoll)
-[![原始稿](https://img.shields.io/badge/原始稿-314%20文件%20%2F%20180MB-ffb454)](https://github.com/604665656/hashimiao-asset-archive)
+[![原始稿](https://img.shields.io/badge/原始稿-246%20张%20%2F%20171MB-ffb454)](https://github.com/604665656/hashimiao-asset-archive)
 
 本地纸娃娃编辑器，纯前端无后端。操作模型参照《冒险岛》纸娃娃 4.0 的交互逻辑（只复刻操作方式，素材全部自有）。
 
@@ -42,8 +42,9 @@
 配套三套 Python 工具：截图批量入库（泛洪去背 + 连通域切图 + 归一化）、素材体检（尺寸 / alpha / 命名 / 缺件，47 项）、参考卡生成（头身比 / 衣褶 / 八向骨架比例）。
 
 原始生成稿另存一份：[**hashimiao-asset-archive**](https://github.com/604665656/hashimiao-asset-archive)
-—— 从元宝客户端缓存里抢救出的 304 张原图 + 桌面散件，共 314 个文件 / 180MB，
-带 sha1 清单和图廊（[在线看](https://604665656.github.io/hashimiao-asset-archive/)）。
+—— 从元宝客户端缓存里抢救出的 246 张原图（含桌面散件），带 sha1 清单和图廊
+（[在线看](https://604665656.github.io/hashimiao-asset-archive/)）。
+缓存是整个 App 共享的，另外混进来的 68 张别的对话的图单独归类存档，不混在一起。
 
 ---
 
