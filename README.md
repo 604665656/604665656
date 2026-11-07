@@ -21,7 +21,7 @@
 | [live-copilot · 路线图](https://github.com/users/604665656/projects/6) | 弹幕游戏 AI 导演 | 2 项 |
 | [skyworth 8S03 物理按键 · 路线图](https://github.com/users/604665656/projects/8) | 电视按键映射 | 2 项 |
 | [若辰曲库 × Toy 小游戏 · 路线图](https://github.com/users/604665656/projects/7) | 匹配体系与生成物 | 2 项 |
-| [yuanbao-cache-recover · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 5 项，3 个 P1 |
+| [yuanbao-asset-rescue · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 5 项，3 个 P1 |
 
 优先级只有三档：**P0** 现在就做 / **P1** 下一批 / **P2** 有空再说。
 
@@ -51,7 +51,7 @@
 
 ## 元宝缓存抢救工具
 
-[![仓库](https://img.shields.io/badge/源码-yuanbao--cache--recover-181717?logo=github)](https://github.com/604665656/yuanbao-cache-recover)
+[![仓库](https://img.shields.io/badge/源码-yuanbao--asset--rescue-181717?logo=github)](https://github.com/604665656/yuanbao-asset-rescue)
 [![路线图](https://img.shields.io/badge/路线图-Project-5cc8ff)](https://github.com/users/604665656/projects/11)
 
 从**元宝 App 的 WebView2 缓存**里把对话中渲染过的图片全部捞出来，整理成带清单和图廊的档案。上面那份 246 张原始稿就是它捞的。
