@@ -21,6 +21,7 @@
 | [live-copilot · 路线图](https://github.com/users/604665656/projects/6) | 弹幕游戏 AI 导演 | 2 项 |
 | [skyworth 8S03 物理按键 · 路线图](https://github.com/users/604665656/projects/8) | 电视按键映射 | 2 项 |
 | [若辰曲库 × Toy 小游戏 · 路线图](https://github.com/users/604665656/projects/7) | 匹配体系与生成物 | 2 项 |
+| [yuanbao-cache-recover · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 5 项，3 个 P1 |
 
 优先级只有三档：**P0** 现在就做 / **P1** 下一批 / **P2** 有空再说。
 
@@ -45,6 +46,22 @@
 —— 从元宝客户端缓存里抢救出的 246 张原图（含桌面散件），带 sha1 清单和图廊
 （[在线看](https://604665656.github.io/hashimiao-asset-archive/)）。
 缓存是整个 App 共享的，另外混进来的 68 张别的对话的图单独归类存档，不混在一起。
+
+---
+
+## 元宝缓存抢救工具
+
+[![仓库](https://img.shields.io/badge/源码-yuanbao--cache--recover-181717?logo=github)](https://github.com/604665656/yuanbao-cache-recover)
+[![路线图](https://img.shields.io/badge/路线图-Project-5cc8ff)](https://github.com/users/604665656/projects/11)
+
+从**元宝 App 的 WebView2 缓存**里把对话中渲染过的图片全部捞出来，整理成带清单和图廊的档案。上面那份 246 张原始稿就是它捞的。
+
+- `recover.py`：扫缓存 → 按 magic byte 认图片 → sha1 去重 → 绿占比/尺寸分桶
+- `build_archive.py`：分组编号 → 清单（CSV/JSON）→ 缩略图 → 分组总览 → 静态图廊
+- `triage.py`：出逐格审查图，人工挑出「别的对话混进来的图」
+- `push.py`：大仓库分批推送，代理不稳时也能推完
+
+README 里记死了踩过的坑：**缓存是全 App 共享**（不按对话分，必须人工分拣）、**对话正文救不回来**（流式响应不落盘）、**缓存 JPG 可能被截断**（要开 `LOAD_TRUNCATED_IMAGES`）、**Pages 要放 `.nojekyll`**、**代理会截断大响应**（验证用 API 取 blob 别用 curl）。
 
 ---
 
