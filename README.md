@@ -21,7 +21,7 @@
 | [live-copilot · 路线图](https://github.com/users/604665656/projects/6) | 弹幕游戏 AI 导演 | 2 项 |
 | [skyworth 8S03 物理按键 · 路线图](https://github.com/users/604665656/projects/8) | 电视按键映射 | 2 项 |
 | [若辰曲库 × Toy 小游戏 · 路线图](https://github.com/users/604665656/projects/7) | 匹配体系与生成物 | 2 项 |
-| [yuanbao-asset-rescue · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 5 项，3 个 P1 |
+| [yuanbao-asset-rescue · 路线图](https://github.com/users/604665656/projects/11) | 元宝缓存图片抢救工具 | 8 项，4 个 P1 |
 
 优先级只有三档：**P0** 现在就做 / **P1** 下一批 / **P2** 有空再说。
 
